@@ -77,11 +77,8 @@ module Tester
 
 
 
-		#before(:each) do
-		before(:all) do
-			#@stack = Stack.new
-			account = Account.new() 
-		end
+#jx: 13 aug 2014 
+		account = Account.new() 
 
 
 		it "should" do
@@ -93,7 +90,11 @@ module Tester
 			(3*5).should_not == 10    	
 			
 			# should w. floating-point calculation 
-			(5.255).should be_close(5.25, 0.005)
+			#(5.255).should be_close(5.25, 0.005)
+
+#jx: 13 aug 2014
+			(5.255).should 	be_within(0.005).of(5.25)
+
 
 			# should w. regular expressions 
 			#account = Account.new() 
