@@ -1,5 +1,5 @@
 
-#jr: 14 aug 2014
+#jr@oblique : 14 aug 2014
 
 
 # Specs to learn how to program using BDD (Behavior Driven Development)
