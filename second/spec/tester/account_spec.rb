@@ -1,4 +1,6 @@
 
+#jr: 14 aug 2014
+
 
 # Specs to learn how to program using BDD (Behavior Driven Development)
 # From the book by David Chelimsky.
@@ -9,9 +11,10 @@ require 'spec_helper'
 module Tester 
 
 
+# Description of an Example Group 
 	describe "Account" do                   					# Example group 
+
     
-		#account = Account.new('0') 
 		account = Account.new() 
 
 
@@ -25,6 +28,7 @@ module Tester
 
 		end
 
+
 # Statement reporting 
 		context "Reporting" do
 			it "should have a correct statement" do
@@ -35,6 +39,7 @@ module Tester
       		end
 
     	end
+
 
 # Errors 
     	context "Error raising" do
