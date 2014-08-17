@@ -1,23 +1,53 @@
 
 
+#jr@oblique : 17 aug 2014
+
+# Description:  Classes documented by the account specs 
+
+
 module Tester
 
 
-	class AccountError < StandardError  
-	#class InsufficientFundsError < StandardError  
-		def initialize()
-		end
-	end  
 
+# Request parameters
+
+    class RequestParameters
+
+        def initialize
+
+            @hash = {   :a => "a", 
+                        :b => "b", 
+                        :c => "c" 
+                    }
+        end
+
+        def has_key?(id)
+            #true 
+            @hash.has_key?(id)
+        end 
+
+    end
+
+
+# Error classes 
+    class AccountError < StandardError  
+
+        def initialize()
+        end
+
+        def raiseAccountError()
+            raise AccountError
+        end
+
+    end  
 
 	class InsufficientFundsError < AccountError
 	end
 
 
-
+# Business classes 
 	class Account
 
-    	#def initialize(init)
     	def initialize()
     		init = 0
       		@money = init
@@ -27,7 +57,6 @@ module Tester
     	def withdraw(amount)
     		#raise InsufficientFundsError, 'Not enough money'
     		raise InsufficientFundsError
-    		#@money = @money - amount
     	end
 
 

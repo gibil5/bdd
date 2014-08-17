@@ -1,9 +1,22 @@
 
-#jr@oblique : 14 aug 2014
+
+#jr@oblique : 17 aug 2014
 
 
-# Specs to learn how to program using BDD (Behavior Driven Development)
-# From the book by David Chelimsky.
+# Description: 	Specs to learn how to program using BDD (Behavior Driven Development)
+
+# From: 		The Rspec Book by David Chelimsky et al.
+#   			Ch. 13, Rspec 
+
+# Goal (short term):  	To understand the development paradigm used by Michael Hartl seminal book on Ruby on Rails: 
+#  						"The Ruby on Rails Tutorial" 
+
+# Goal (long term):   	To work as a software engineer with interesting people like, 	
+#   						- Martin Fulgueiras (Lima)
+#   						- Pepe Ceballos (Mexico) 
+#   						- ...
+
+
 
 require 'spec_helper'
 
@@ -15,14 +28,15 @@ module Tester
 	describe "Account" do                   					# Example group 
 
     
+# Creation 
 		account = Account.new() 
 
 
-# Creation 
+# Verify Balance
 		context "Has just been created" do
 
-			it "should have a balance of 0" do                	# Code example 
-				#account.balance.should == Money.new(0, :USD)
+			# Code Example 
+			it "should have a balance of 0" do                	
 				account.balance.should == 0
 			end
 
@@ -31,9 +45,10 @@ module Tester
 
 # Statement reporting 
 		context "Reporting" do
+
+			# Code Example 
 			it "should have a correct statement" do
-				#account.statement.should == ''
-				# Looks for a pattern 
+				# Looks for a pattern, using a regular expression  
 				account.statement.should =~ /Total Due: \$37\.42/m
 				account.statement.should match (/Total Due: \$37\.42/)
       		end
@@ -41,8 +56,10 @@ module Tester
     	end
 
 
-# Errors 
-    	context "Error raising" do
+# Expecting Errors 
+    	context "Raising Errors" do
+
+    		# Code Example 
     		it "should raise an error if insufficient funds" do
     			
     			expect {
@@ -55,7 +72,7 @@ module Tester
 
 
 
-# Test Error classes
+# Test Error Expectation
 	describe "Error classes" do
 
 
@@ -65,9 +82,11 @@ module Tester
 			
 			it "should raise a proper error" do
 
-    			#expect {
+    			expect {
 				#	account.withdraw 75
-				#}.to raise_error(InsufficientFundsError)
+					error.raiseAccountError()
+
+				}.to raise_error(AccountError)
 			end
 		end
 
@@ -75,12 +94,11 @@ module Tester
 
 
 
+
 # Test some matchers 
 
 # Built-in matchers 
 	describe "Built-in matchers" do
-
-
 
 #jx: 13 aug 2014 
 		account = Account.new() 
@@ -117,5 +135,34 @@ module Tester
 
 	end
 
+
+# Predicate matchers 
+	describe "Predicate matcher" do
+
+		context "" do
+
+			it "Testing empty arrays" do
+				arr = [] 
+				#arr.empty?.should == true	# Also valid 
+				arr.should be_empty  
+			end
+
+			it "Test request_parameters" do
+
+				request_parameters = RequestParameters.new 
+
+				request_parameters.has_key?(:a).should == true		# valid  
+
+				request_parameters.should have_key(:a)				# valid 
+
+			end
+
+
+		end		
+	
+	end
+
 end
+
+
 
